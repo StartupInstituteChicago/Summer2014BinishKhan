@@ -1,0 +1,23 @@
+<h1>Listing cubes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cubes.each do |cube| %>
+      <tr>
+        <td><%= link_to 'Show', cube %></td>
+        <td><%= link_to 'Edit', edit_cube_path(cube) %></td>
+        <td><%= link_to 'Destroy', cube, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Cube', new_cube_path %>
