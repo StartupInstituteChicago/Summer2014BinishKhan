@@ -1,0 +1,32 @@
+<%= form_for @reservation, :html => {:multipart => true} do |f| %>
+  <p>
+    <%= f.label :restaurant_id, "Select a Restaurant" %><br>
+  <%= collection_select(:reservation, :restaurant_id, Restaurant.all, :id, :name)
+%>  </p>
+ 
+  <p>
+    <%= f.label :email %><br>
+    <%= f.email_field :email %>
+  </p>
+<p>
+  <p><%= f.label :requested_at, "For when?" %></p>
+    <div class="row">
+        <div class="small-6 columns">
+              <p><%= f.date_select :requested_at, start_year: DateTime.now.year, start_month: DateTime.now.month, start_day: DateTime.now.day, prompt: true %>
+      </div>
+      <div class="small-6 columns">
+              <p><%= f.time_select :requested_at, prompt: true, ampm: true %>
+      </div>
+    </div>
+  <p>
+</p>
+
+  <p>
+    <%= f.label :message %><br>
+    <%= f.text_area :message %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
